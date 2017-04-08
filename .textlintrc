@@ -1,0 +1,23 @@
+{
+  "rules": {
+    "max-ten": {
+      "max": 3
+    },
+    "spellcheck-tech-word": true,
+    "no-mix-dearu-desumasu": true,
+    "common-misspellings" : {
+      "ignore": []
+    },
+    "ja-no-abusage" : true,
+//    "no-doubled-joshi" : {
+//      "min_interval" : 1,
+//      "strict": false,
+//      "allow": []
+//    },
+    "preset-jtf-style": {
+      "3.1.1.全角文字と半角文字の間": false,
+      "4.3.1.丸かっこ（）": false,
+      "4.2.2.疑問符(？)" : false
+    }
+  }
+}

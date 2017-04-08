@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 744.09448819 1052.3622047"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="architecture.svg"
+   inkscape:export-filename="/home/nkon/src/rust/stm32cubef1/architecture.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.4"
+     inkscape:cx="337.63426"
+     inkscape:cy="809.9411"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1280"
+     inkscape:window-height="1390"
+     inkscape:window-x="1280"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="レイヤー 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:0.33442566;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect4155"
+       width="331.49564"
+       height="195.12502"
+       x="364.58228"
+       y="44.147179" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:15px;line-height:125%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="365.36884"
+       y="40.453674"
+       id="text4157"
+       sodipodi:linespacing="100%"><tspan
+         sodipodi:role="line"
+         id="tspan4159"
+         x="365.36884"
+         y="40.453674">ラッパーインターフェイス<tspan
+   style="-inkscape-font-specification:'Arial, Normal';font-family:Arial;font-weight:normal;font-style:normal;font-stretch:normal;font-variant:normal;font-size:10px;text-anchor:start;text-align:start;writing-mode:lr;line-height:100%"
+   id="tspan4347">(作るのは楽だがあまり安全ではない)</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:15px;line-height:125%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="384.4704"
+       y="75.858917"
+       id="text4157-9"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4159-0"
+         x="384.4704"
+         y="75.858917">src/lib.rs</tspan></text>
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:0.20505358;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect4155-5"
+       width="303.34073"
+       height="80.166985"
+       x="381.69016"
+       y="62.265244" />
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:0.09567291;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect4155-5-6"
+       width="276.17596"
+       height="19.168297"
+       x="397.79794"
+       y="78.878052" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:15px;line-height:125%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="399.98117"
+       y="92.373711"
+       id="text4157-9-7"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4159-0-7"
+         x="399.98117"
+         y="92.373711">src/gpio.rs         ラッパー</tspan></text>
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:0.09567291;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect4155-5-6-4"
+       width="276.17596"
+       height="19.168297"
+       x="397.98346"
+       y="100.99234" />
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:0.05024142;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect4155-5-6-0"
+       width="276.22137"
+       height="5.2851572"
+       x="397.96069"
+       y="124.1839" />
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:0.05024142;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect4155-5-6-6"
+       width="276.22137"
+       height="5.2851567"
+       x="397.96072"
+       y="132.75534" />
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:0.20911749;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect4155-5-4"
+       width="303.33667"
+       height="83.377205"
+       x="381.54596"
+       y="146.56645" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:15px;line-height:125%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="383.90973"
+       y="159.8737"
+       id="text4157-9-74"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4159-0-8"
+         x="383.90973"
+         y="159.8737">STM32Cube_FW_F1_V???/       ダウンロード</tspan></text>
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:0.09567291;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect4155-5-6-5"
+       width="276.17596"
+       height="19.168297"
+       x="397.98343"
+       y="166.06377" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:15px;line-height:125%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="400.16666"
+       y="179.55943"
+       id="text4157-9-7-8"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4159-0-7-2"
+         x="400.16666"
+         y="179.55943">stm32f1xx_hal_gpio.c</tspan></text>
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:0.09567291;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect4155-5-6-4-6"
+       width="276.17596"
+       height="19.168297"
+       x="398.34061"
+       y="188.56377" />
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:0.05024142;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect4155-5-6-0-0"
+       width="276.22137"
+       height="5.2851572"
+       x="398.31784"
+       y="211.75533" />
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:0.05024142;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect4155-5-6-6-6"
+       width="276.22137"
+       height="5.2851567"
+       x="398.31787"
+       y="220.32677" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:15px;line-height:125%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="373.90033"
+       y="59.512909"
+       id="text4157-6"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4159-4"
+         x="373.90033"
+         y="59.512909">stm32cubef1</tspan></text>
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:0.38297877;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect4155-9"
+       width="302.87567"
+       height="280.07645"
+       x="18.56217"
+       y="249.10968" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:15px;line-height:125%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="23.186026"
+       y="264.15576"
+       id="text4157-6-6"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4159-4-0"
+         x="23.186026"
+         y="264.15576">stm32f1_blinky</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:15px;line-height:100%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="20.897219"
+       y="243.87256"
+       id="text4157-7"
+       sodipodi:linespacing="100%"><tspan
+         sodipodi:role="line"
+         id="tspan4159-01"
+         x="20.897219"
+         y="243.87256">アプリ</tspan></text>
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:0.17929813;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect4155-5-1"
+       width="279.08078"
+       height="66.621307"
+       x="34.745346"
+       y="272.26584" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:15px;line-height:125%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="37.838295"
+       y="287.01657"
+       id="text4157-9-3"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4159-0-77"
+         x="37.838295"
+         y="287.01657">src/main.rs</tspan></text>
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:0.17929813;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect4155-5-1-2"
+       width="279.08078"
+       height="66.621307"
+       x="34.745327"
+       y="345.4801" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:15px;line-height:125%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="37.649971"
+       y="359.15942"
+       id="text4157-9-3-6"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4159-0-77-4"
+         x="37.649971"
+         y="359.15942">cubemx/gpio.c</tspan></text>
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:0.17929813;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect4155-5-1-2-5"
+       width="279.08078"
+       height="66.621307"
+       x="34.745323"
+       y="416.1944" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:15px;line-height:125%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="38.241318"
+       y="431.33194"
+       id="text4157-9-3-6-2"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4159-0-77-4-0"
+         x="38.241318"
+         y="431.33194">cubemx/Drivers/</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:15px;line-height:125%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="56.812748"
+       y="459.90338"
+       id="text4157-9-3-6-2-2"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4159-0-77-4-0-9"
+         x="56.812748"
+         y="459.90338">⇒ラッパーインターフェイスに置き換え</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:15px;line-height:125%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="56.578194"
+       y="380.17767"
+       id="text4157-9-3-6-2-2-0"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan4159-0-77-4-0-9-9"
+         x="56.578194"
+         y="380.17767">CubeMXが生成した初期化関数は</tspan><tspan
+         sodipodi:role="line"
+         x="56.578194"
+         y="400.66434"
+         id="tspan4538">アプリにリンクする。</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 352.50781 113.58008 L 352.4082 119.50586 L 342.14258 119.50586 L 335.71484 119.50586 L 332.14258 119.50586 L 332.14258 444.49023 L 302.84375 444.49023 L 302.84375 457.37695 L 342.87109 457.37695 L 342.87109 444.49023 L 342.14258 444.49023 L 342.14258 128.79102 L 352.25195 128.79102 L 352.14258 135.21875 L 371.06445 124.71484 L 352.50781 113.58008 z "
+       id="rect4540" />
+    <rect
+       style="fill:none;stroke:#000000;stroke-width:0.33442566;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       id="rect4155-3"
+       width="331.49564"
+       height="195.12502"
+       x="366.39505"
+       y="290.51398" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:15px;line-height:100%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="367.32581"
+       y="285.30115"
+       id="text4157-67"
+       sodipodi:linespacing="100%"><tspan
+         sodipodi:role="line"
+         x="367.32581"
+         y="285.30115"
+         id="tspan4213">安全なインターフェイス<tspan
+   style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:10px;line-height:100%;font-family:Arial;-inkscape-font-specification:'Arial, Normal';text-align:start;writing-mode:lr-tb;text-anchor:start"
+   id="tspan4347-3">(作るのが大変)</tspan></tspan></text>
+  </g>
+</svg>

@@ -1,0 +1,14 @@
+[build]
+target = "thumbv6m-none-eabi"
+
+[target.thumbv6m-none-eabi]
+rustflags = [
+    "-Z", "no-landing-pads",
+    "-C", "opt-level=2",
+    "-C", "link-arg=-mcpu=cortex-m3",
+    "-C", "link-arg=-mthumb",
+    "-C", "link-arg=-mfloat-abi=soft",
+    "-C", "link-arg=-specs=nosys.specs",
+    "-C", "link-arg=-specs=nano.specs",
+    "-C", "link-arg=-Tcubemx/STM32F103RBTx_FLASH.ld"
+]
