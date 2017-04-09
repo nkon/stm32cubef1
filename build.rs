@@ -21,17 +21,11 @@ fn main() {
     let srcs = [
         [&format!("{}/Drivers/STM32F1xx_HAL_Driver/Src", cube_top), "stm32f1xx_hal_gpio.c"],
         [&format!("{}/Drivers/STM32F1xx_HAL_Driver/Src", cube_top), "stm32f1xx_hal_rcc.c"],
+        [&format!("{}/Drivers/STM32F1xx_HAL_Driver/Src", cube_top), "stm32f1xx_hal_cortex.c"],
         [&format!("{}/Drivers/STM32F1xx_HAL_Driver/Src", cube_top), "stm32f1xx_hal.c"]
     ];
 
     let mut objs: Vec<String> = Vec::new();
-
-    // Command::new("arm-none-eabi-as")
-    //     .args(&["-mcpu=cortex-m3", "-mthumb", "-mfloat-abi=soft"])
-    //     .args(&["cubemx/startup/startup_stm32f103xb.s"])
-    //     .args(&["-o"])
-    //     .arg(&format!("{}/startup_stm32f103xb.o", out_dir))
-    //     .status().unwrap();
 
     for src in &srcs {
         let obj = src[1].to_string().replace(".c", ".o");
