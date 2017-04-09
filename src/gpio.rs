@@ -75,26 +75,27 @@ extern "C" {
     pub fn HAL_GPIO_ReadPin(GPIOx: &mut TypeDef, GPIO_Pin: u16) -> u32;
 }
 
-pub fn Init(GPIOx: &mut TypeDef, GPIO_Init: &InitTypeDef) -> () {
-    unsafe {
-        HAL_GPIO_Init(GPIOx, GPIO_Init);
+impl TypeDef {
+    pub fn Init(&mut self, GPIO_Init: &InitTypeDef) -> () {
+        unsafe {
+            HAL_GPIO_Init(self, GPIO_Init);
+        }
+    }
+
+    pub fn WritePin(&mut self, GPIO_Pin: u16, PinState: u32) -> () {
+        unsafe {
+            HAL_GPIO_WritePin(self, GPIO_Pin, PinState);
+        }
+    }
+
+    pub fn ReadPin(&mut self, GPIO_Pin: u16) -> u32 {
+        let ret: u32;
+        unsafe {
+            ret = HAL_GPIO_ReadPin(self, GPIO_Pin);
+        }
+        ret
     }
 }
-
-pub fn WritePin(GPIOx: &mut TypeDef, GPIO_Pin: u16, PinState: u32) -> () {
-    unsafe {
-        HAL_GPIO_WritePin(GPIOx, GPIO_Pin, PinState);
-    }
-}
-
-pub fn ReadPin(GPIOx: &mut TypeDef, GPIO_Pin: u16) -> u32 {
-    let ret: u32;
-    unsafe {
-        ret = HAL_GPIO_ReadPin(GPIOx, GPIO_Pin);
-    }
-    ret
-}
-
 
 pub fn GPIOA() -> &'static mut TypeDef {
     unsafe { &mut *(GPIOA_BASE as *mut TypeDef) }
