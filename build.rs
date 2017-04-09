@@ -26,12 +26,12 @@ fn main() {
 
     let mut objs: Vec<String> = Vec::new();
 
-    Command::new("arm-none-eabi-as")
-        .args(&["-mcpu=cortex-m3", "-mthumb", "-mfloat-abi=soft"])
-        .args(&["cubemx/startup/startup_stm32f103xb.s"])
-        .args(&["-o"])
-        .arg(&format!("{}/startup_stm32f103xb.o", out_dir))
-        .status().unwrap();
+    // Command::new("arm-none-eabi-as")
+    //     .args(&["-mcpu=cortex-m3", "-mthumb", "-mfloat-abi=soft"])
+    //     .args(&["cubemx/startup/startup_stm32f103xb.s"])
+    //     .args(&["-o"])
+    //     .arg(&format!("{}/startup_stm32f103xb.o", out_dir))
+    //     .status().unwrap();
 
     for src in &srcs {
         let obj = src[1].to_string().replace(".c", ".o");
