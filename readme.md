@@ -165,3 +165,6 @@ fn main() {
   + リンカスクリプト(`STM32F103RBTx_FLASH.ld`)
 
 ビルドには、通常はアプリ側で生成される`stm32f1xx_hal_conf.h`などが無いといけない。適当に生成したプロジェクトから`cubemx/`以下にコピーしてまかなう。
+
+![architecture.png](architecture.png)
+
