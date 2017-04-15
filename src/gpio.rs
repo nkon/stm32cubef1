@@ -1,5 +1,10 @@
 #![allow(non_snake_case)]
 
+//! Interface of stm32f1xx_hal_gpio.c
+//! # Examples
+//! let io = GPIOA().ReadPin(PIN_5); // gpio::Level
+//! GPIOA().WritePin(PIN_5, gpio::Level::High);  // or gpio::Level::Low
+
 // レジスタアドレスの定義
 const PERIPH_BASE: u32 = 0x40000000;
 
@@ -50,6 +55,11 @@ pub const NOPULL: u32 = 0x00000000;
 pub const PULLUP: u32 = 0x00000001;
 pub const PULLDOWN: u32 = 0x00000002;
 
+pub enum Level {
+    Low,
+    High,
+}
+
 #[repr(C)] // C の struct のインポート
 pub struct InitTypeDef {
     pub Pin: u32,
@@ -82,18 +92,26 @@ impl TypeDef {
         }
     }
 
-    pub fn WritePin(&mut self, GPIO_Pin: u16, PinState: u32) -> () {
-        unsafe {
-            HAL_GPIO_WritePin(self, GPIO_Pin, PinState);
+    pub fn WritePin(&mut self, GPIO_Pin: u16, PinState: Level) -> () {
+        match PinState {
+            Level::Low => unsafe {
+                HAL_GPIO_WritePin(self, GPIO_Pin, 0 as u32);
+            },
+            Level::High => unsafe {
+                HAL_GPIO_WritePin(self, GPIO_Pin, 1 as u32);
+            },
         }
     }
 
-    pub fn ReadPin(&mut self, GPIO_Pin: u16) -> u32 {
+    pub fn ReadPin(&mut self, GPIO_Pin: u16) -> Level {
         let ret: u32;
         unsafe {
             ret = HAL_GPIO_ReadPin(self, GPIO_Pin);
         }
-        ret
+        match ret {
+            0 => Level::Low,
+            _ => Level::High,
+        }
     }
 }
 
