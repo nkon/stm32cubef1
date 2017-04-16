@@ -2,8 +2,10 @@
 
 //! Interface of stm32f1xx_hal_gpio.c
 //! # Examples
+//! ```
 //! let io = GPIOA().ReadPin(PIN_5); // gpio::Level
 //! GPIOA().WritePin(PIN_5, gpio::Level::High);  // or gpio::Level::Low
+//! ```
 
 // レジスタアドレスの定義
 const PERIPH_BASE: u32 = 0x40000000;
