@@ -5,6 +5,7 @@ pub mod gpio;
 pub mod tim;
 pub mod pwr;
 pub mod hal;
+pub mod uart;
 
 // #[cfg(test)]
 // mod tests {
