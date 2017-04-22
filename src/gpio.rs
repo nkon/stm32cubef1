@@ -63,7 +63,7 @@ pub enum Level {
 }
 
 #[repr(C)] // C の struct のインポート
-pub struct InitTypeDef {
+pub struct Init {
     pub Pin: u32,
     pub Mode: u32,
     pub Pull: u32,
@@ -71,7 +71,7 @@ pub struct InitTypeDef {
 }
 
 #[repr(C)]
-pub struct TypeDef {
+pub struct Regs {
     CRL: u32,
     CRH: u32,
     IDR: u32,
@@ -82,13 +82,13 @@ pub struct TypeDef {
 }
 
 extern "C" {
-    pub fn HAL_GPIO_Init(GPIOx: &mut TypeDef, GPIO_Init: &InitTypeDef);
-    pub fn HAL_GPIO_WritePin(GPIOx: &mut TypeDef, GPIO_Pin: u16, PinState: u32);
-    pub fn HAL_GPIO_ReadPin(GPIOx: &mut TypeDef, GPIO_Pin: u16) -> u32;
+    pub fn HAL_GPIO_Init(GPIOx: &mut Regs, GPIO_Init: &Init);
+    pub fn HAL_GPIO_WritePin(GPIOx: &mut Regs, GPIO_Pin: u16, PinState: u32);
+    pub fn HAL_GPIO_ReadPin(GPIOx: &mut Regs, GPIO_Pin: u16) -> u32;
 }
 
-impl TypeDef {
-    pub fn Init(&mut self, GPIO_Init: &InitTypeDef) -> () {
+impl Regs {
+    pub fn Init(&mut self, GPIO_Init: &Init) -> () {
         unsafe {
             HAL_GPIO_Init(self, GPIO_Init);
         }
@@ -117,18 +117,18 @@ impl TypeDef {
     }
 }
 
-pub fn GPIOA() -> &'static mut TypeDef {
-    unsafe { &mut *(GPIOA_BASE as *mut TypeDef) }
+pub fn GPIOA() -> &'static mut Regs {
+    unsafe { &mut *(GPIOA_BASE as *mut Regs) }
 }
-pub fn GPIOB() -> &'static mut TypeDef {
-    unsafe { &mut *(GPIOB_BASE as *mut TypeDef) }
+pub fn GPIOB() -> &'static mut Regs {
+    unsafe { &mut *(GPIOB_BASE as *mut Regs) }
 }
-pub fn GPIOC() -> &'static mut TypeDef {
-    unsafe { &mut *(GPIOC_BASE as *mut TypeDef) }
+pub fn GPIOC() -> &'static mut Regs {
+    unsafe { &mut *(GPIOC_BASE as *mut Regs) }
 }
-pub fn GPIOD() -> &'static mut TypeDef {
-    unsafe { &mut *(GPIOD_BASE as *mut TypeDef) }
+pub fn GPIOD() -> &'static mut Regs {
+    unsafe { &mut *(GPIOD_BASE as *mut Regs) }
 }
-pub fn GPIOE() -> &'static mut TypeDef {
-    unsafe { &mut *(GPIOE_BASE as *mut TypeDef) }
+pub fn GPIOE() -> &'static mut Regs {
+    unsafe { &mut *(GPIOE_BASE as *mut Regs) }
 }

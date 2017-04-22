@@ -18,7 +18,7 @@ pub enum Status {
 }
 
 #[repr(C)]
-pub struct TypeDef {
+pub struct Regs {
     SR: u32, /* USART Status register */
     DR: u32, /* USART Data register */
     BRR: u32, /* USART Baud rate register */
@@ -29,21 +29,21 @@ pub struct TypeDef {
 }
 
 #[repr(C)]
-pub struct HandleTypeDef {
+pub struct Handle {
     dummy: u32,
 }
 
 extern "C" {
-    pub fn HAL_UART_Transmit_IT(husart: &mut HandleTypeDef, pTxData: *const u8, Size: u16) -> u32;
-    pub fn HAL_UART_Receive_IT(husart: &mut HandleTypeDef, pRxData: *const u8, Size: u16) -> u32;
-    pub fn HAL_UART_TransmitReceive_IT(husart: &mut HandleTypeDef,
+    pub fn HAL_UART_Transmit_IT(husart: &mut Handle, pTxData: *const u8, Size: u16) -> u32;
+    pub fn HAL_UART_Receive_IT(husart: &mut Handle, pRxData: *const u8, Size: u16) -> u32;
+    pub fn HAL_UART_TransmitReceive_IT(husart: &mut Handle,
                                        pTxData: *const u8,
                                        pRxData: *const u8,
                                        Size: u16)
                                        -> u32;
 }
 
-impl HandleTypeDef {
+impl Handle {
     pub fn Transmit_IT(&mut self, pTxData: &str) -> Status {
         let ret: u32;
         unsafe {
@@ -67,12 +67,12 @@ impl HandleTypeDef {
     }
 }
 
-pub fn USART2() -> &'static mut TypeDef {
-    unsafe { &mut *(USART2_BASE as *mut TypeDef) }
+pub fn USART2() -> &'static mut Regs {
+    unsafe { &mut *(USART2_BASE as *mut Regs) }
 }
-pub fn USART3() -> &'static mut TypeDef {
-    unsafe { &mut *(USART3_BASE as *mut TypeDef) }
+pub fn USART3() -> &'static mut Regs {
+    unsafe { &mut *(USART3_BASE as *mut Regs) }
 }
-pub fn USART1() -> &'static mut TypeDef {
-    unsafe { &mut *(USART1_BASE as *mut TypeDef) }
+pub fn USART1() -> &'static mut Regs {
+    unsafe { &mut *(USART1_BASE as *mut Regs) }
 }
