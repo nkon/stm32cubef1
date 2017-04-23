@@ -6,6 +6,8 @@ pub mod tim;
 pub mod pwr;
 pub mod hal;
 pub mod uart;
+pub mod lock;
+pub mod queue;
 
 // #[cfg(test)]
 // mod tests {
