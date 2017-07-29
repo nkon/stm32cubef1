@@ -3,7 +3,8 @@ use std::env;
 use std::path::Path;
 
 fn main() {
-    let cube_top = "STM32Cube_FW_F1_V1.4.0";
+//    let cube_top = "STM32Cube_FW_F1_V1.4.0";
+    let cube_top = "STM32Cube_FW_F1_V1.6.0";
 
     let out_dir = env::var("OUT_DIR").unwrap();
 

@@ -1,3 +1,24 @@
+# How to build library
+
+```
+$ xargo build
+```
+and
+```
+extern crete stm32cubef1;
+use stm32cubef1;
+```
+in your application.
+
+# How to build documents
+
+```
+$ rustdoc src/lib.rs
+```
+and read doc/lib/index.html
+
+--------------------------
+
 ## make new project
 
 ```

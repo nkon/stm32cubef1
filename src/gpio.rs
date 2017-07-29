@@ -1,6 +1,14 @@
 #![allow(non_snake_case)]
+#![allow(dead_code)]
 
 //! Interface of stm32f1xx_hal_gpio.c
+//!
+//! `GPIOA()`-`GPIOE()` are defined as Reference of GPIO port.
+//!
+//! PIN_0 - PIN_15 are defined for Pin name.
+//!
+//! ReadPin() and WritePin() are defined for each GPIO port to read or write pin.
+//!
 //! # Examples
 //! ```
 //! let io = GPIOA().ReadPin(PIN_5); // gpio::Level
@@ -88,12 +96,15 @@ extern "C" {
 }
 
 impl Regs {
+
+    /// Initialize GPIO using GPIO_Init.
     pub fn Init(&mut self, GPIO_Init: &Init) -> () {
         unsafe {
             HAL_GPIO_Init(self, GPIO_Init);
         }
     }
 
+    /// Set or Reset the level of the pin of the GPIO.
     pub fn WritePin(&mut self, GPIO_Pin: u16, PinState: Level) -> () {
         match PinState {
             Level::Low => unsafe {
@@ -105,6 +116,7 @@ impl Regs {
         }
     }
 
+    /// Read the level of the pin of the GPIO.
     pub fn ReadPin(&mut self, GPIO_Pin: u16) -> Level {
         let ret: u32;
         unsafe {
@@ -117,18 +129,28 @@ impl Regs {
     }
 }
 
+/// Return the reference of the GPIO_A.
+/// the reference has some trait functions such as WritePin, ReadPin.
 pub fn GPIOA() -> &'static mut Regs {
     unsafe { &mut *(GPIOA_BASE as *mut Regs) }
 }
+
+/// Return the reference of the GPIO_B.
 pub fn GPIOB() -> &'static mut Regs {
     unsafe { &mut *(GPIOB_BASE as *mut Regs) }
 }
+
+/// Return the reference of the GPIO_C.
 pub fn GPIOC() -> &'static mut Regs {
     unsafe { &mut *(GPIOC_BASE as *mut Regs) }
 }
+
+/// Return the reference of the GPIO_D.
 pub fn GPIOD() -> &'static mut Regs {
     unsafe { &mut *(GPIOD_BASE as *mut Regs) }
 }
+
+/// Return the reference of the GPIO_E.
 pub fn GPIOE() -> &'static mut Regs {
     unsafe { &mut *(GPIOE_BASE as *mut Regs) }
 }

@@ -1,7 +1,23 @@
 #![allow(non_snake_case)]
+#![allow(dead_code)]
 
 //! Interface of stm32f1xx_hal_usart.c
+//!
+//!
+//!
+//!
+//!
+//!
+//!
+//!
 //! # Examples
+//! ```
+//! HUART2().Tranmit_IT("Foo"); /// Send "Foo" from HUART2 port.
+//! ```
+//!
+//!
+//!
+//!
 
 // レジスタアドレスの定義
 const PERIPH_BASE: u32 = 0x40000000;
@@ -29,6 +45,18 @@ pub struct Regs {
 }
 
 #[repr(C)]
+#[derive(Clone)]
+pub struct Init {
+    BaudRate: u32,
+    WordLength: u32,
+    StopBits: u32,
+    Parity: u32,
+    Mode: u32,
+    HwFlowCtl: u32,
+    OverSampling: u32,
+}
+
+#[repr(C)]
 pub struct Handle {
     Instance: &'static mut Regs,
     pub Init: Init,
@@ -45,17 +73,6 @@ pub struct Handle {
     errorCode: u32,
 }
 
-#[repr(C)]
-#[derive(Clone)]
-pub struct Init {
-    BaudRate: u32,
-    WordLength: u32,
-    StopBits: u32,
-    Parity: u32,
-    Mode: u32,
-    HwFlowCtl: u32,
-    OverSampling: u32,
-}
 
 /** @defgroup UART_Flags   UART FLags
   *        Elements values convention: 0xXXXX
@@ -144,28 +161,9 @@ const HAL_UART_STATE_BUSY_TX_RX: u8 = 0x32; /* Data Transmission and Reception p
 const HAL_UART_STATE_TIMEOUT: u8 = 0x03; /* Timeout state */
 const HAL_UART_STATE_ERROR: u8 = 0x04; /* Error */
 
-use lock::Lock;
 const QUEUE_LENGTH: usize = 32;
 
-use gpio;
-use gpio::GPIOA;
-
 use core::ptr;
-
-#[repr(C)]
-pub struct NewHandle<'a> {
-    Instance: &'static mut Regs,
-    Init: Init,
-    pTxBuffPtr: &'a mut[u8],
-    TxXferSize: u16,
-    TxXferCount:u16,
-    pRxBuffPtr: &'a mut[u8],
-    RxXferSize: u16,
-    RxXferCount: u16,
-    lock: Lock,
-    state: u8,
-    errorCode: u32,
-}
 
 extern "C" {
     pub fn HAL_UART_Transmit_IT(husart: &mut Handle, pTxData: *const u8, Size: u16) -> u32;
@@ -180,7 +178,6 @@ extern "C" {
 
 static mut TX_BUFFER:[u8;QUEUE_LENGTH] = [0;QUEUE_LENGTH];
 static mut RX_BUFFER:[u8;QUEUE_LENGTH] = [0;QUEUE_LENGTH];
-
 
 impl Handle {
     pub fn Transmit_IT(&mut self, pTxData: &str) -> Status {
@@ -204,25 +201,26 @@ impl Handle {
             self.RxXferCount = 0;
         }
     }
+
     pub fn Transmit_Q(&mut self, pTxData: &[u8]) -> Status {
-        GPIOA().WritePin(gpio::PIN_5, gpio::Level::Low);
         let ret: u32;
-        unsafe {
-            self.Lock = 1;
-            // for i in 0..pTxData.len() {
-            //     self.pTxBuffPtr[self.TxXferCount as usize + i] = pTxData[i];
-            // }
-            memcpy_offset(self.pTxBuffPtr, pTxData.as_ptr(), pTxData.len() as u8, self.TxXferCount as u8);
-            self.TxXferCount += pTxData.len() as u16;
-            self.State = HAL_UART_STATE_BUSY_TX;
-            self.Lock = 0;
-            HAL_UART_ENABLE_IT(&mut self.Instance, UART_IT_TXE);
-        GPIOA().WritePin(gpio::PIN_5, gpio::Level::High);
-            ret = 0;
-        }
-        match ret {
-            0 => Status::HalOk,
-            _ => Status::HalBusy,
+        if pTxData.len() > (self.TxXferSize-self.TxXferCount) as usize {
+            Status::HalBusy
+        } else {
+            unsafe {
+                self.Lock = 1;
+                // *mut u8 に対して、ポインタの影演算が出来ないので、Cの補助関数を呼ぶ。
+                memcpy_offset(self.pTxBuffPtr, pTxData.as_ptr(), pTxData.len() as u8, self.TxXferCount as u8);
+                self.TxXferCount += pTxData.len() as u16;
+                self.State = HAL_UART_STATE_BUSY_TX;
+                self.Lock = 0;
+                HAL_UART_ENABLE_IT(&mut self.Instance, UART_IT_TXE);
+                ret = 0;
+            }
+            match ret {
+                0 => Status::HalOk,
+                _ => Status::HalBusy,
+            }
         }
     }
 
@@ -235,6 +233,11 @@ impl Handle {
             0 => Status::HalOk,
             _ => Status::HalBusy,
         }
+    }
+
+    pub fn Receive_Until<F>(&mut self, buf: &mut[u8], delim: u8, callback: F)
+        where F: FnOnce(&mut[u8]) {
+            
     }
 }
 
@@ -249,46 +252,16 @@ fn HAL_UART_ENABLE_IT(huart: &mut Regs, int: u32) {
     }
 }
 
-impl<'a> NewHandle<'a> {
-    pub fn new(regs: &'static mut Regs, init: Init) -> Self {
-        unsafe {
-            NewHandle {
-                Instance: regs,
-                Init: init,
-                pTxBuffPtr: &mut TX_BUFFER,
-                TxXferSize: QUEUE_LENGTH as u16,
-                TxXferCount:0,
-                pRxBuffPtr: &mut RX_BUFFER,
-                RxXferSize: QUEUE_LENGTH as u16,
-                RxXferCount: 0,
-                state: HAL_UART_STATE_RESET,
-                lock: Lock::Unlocked,
-                errorCode: 0,
-            }
-        }
-    }
-
-    #[inline]
-    pub fn TxAvailable(&self) -> usize {
-        (self.TxXferSize - self.TxXferCount) as usize
-    }
-
-    pub fn Transmit(&mut self, pTxData: &[u8], size: usize) -> Option<usize> {
-        if self.TxAvailable() >= size {
-            self.lock.get_lock();
-            for i in 0..size {
-                self.pTxBuffPtr[self.TxXferCount as usize + i] = pTxData[i];
-            }
-            self.TxXferCount += size as u16;
-            self.state = HAL_UART_STATE_BUSY_TX;
-            self.lock.unlock();
-            HAL_UART_ENABLE_IT(&mut self.Instance, UART_IT_TXE);
-            Some(size)
-        } else {
-            None
+#[no_mangle]
+/// その名に反して 1文字受信のコールバック
+pub extern "C" fn HAL_UART_RxCpltCallback(huart: &mut Handle) {
+    unsafe {
+        if huart.RxXferCount < huart.RxXferSize {
         }
     }
 }
+
+
 
 pub fn USART2() -> &'static mut Regs {
     unsafe { &mut *(USART2_BASE as *mut Regs) }

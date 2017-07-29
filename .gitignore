@@ -1,6 +1,7 @@
 target
 Cargo.lock
 STM32Cube_FW_F1_V1.4.0
+STM32Cube_FW_F1_V1.6.0
 .cproject
 .project
 doc/*
