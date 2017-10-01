@@ -1,9 +1,12 @@
 # How to build library
 
-```
-$ xargo build
-```
-and
+1. Download STM32Cube Firmware pagkage from http://www.st.com
+2. Extract STM32Cube_FW_**_V*.*.*.zip in this directory.
+3. set the directory name on cube_top variable in `build.rs`.
+4. `$ xargo build`.
+
+You can use lib crate on your application.
+
 ```
 extern crete stm32cubef1;
 use stm32cubef1;
@@ -18,6 +21,8 @@ $ rustdoc src/lib.rs
 and read doc/lib/index.html
 
 --------------------------
+
+# work logs
 
 ## make new project
 
@@ -327,7 +332,7 @@ pub fn GPIOE() -> &'static mut TypeDef {
 
 ### uart.rs
 
-UART と USART があるが、CubeMXのインターフェイスとしては UARTを使えば良い。
+UART と USART があるが、CubeMXのインタフェースとしては UARTを使えば良い。
 
 ```#![allow(non_snake_case)]
 
