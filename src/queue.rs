@@ -1,5 +1,6 @@
 #![allow(dead_code)]
 
+use core;
 use lock::Lock;
 
 #[derive(Debug)]
@@ -49,6 +50,16 @@ impl<'a, T> Queue<'a, T> where T: 'a + Copy {
     }
 
     #[inline]
+    pub fn get_lock(&mut self) {
+        self.lock.get_lock()
+    }
+
+    #[inline]
+    pub fn unlock(&mut self) {
+        self.lock.unlock()
+    }
+
+    #[inline]
     pub fn as_slice(&self) -> &[T] {
         &self.memory[..self.len]
     }
@@ -58,6 +69,12 @@ impl<'a, T> Queue<'a, T> where T: 'a + Copy {
         &mut self.memory[..self.len]
     }
 
+    pub fn peek(&self, index: usize) -> T {
+        assert!(index <= self.len);
+        self.memory[index]
+    }
+
+    /// index 番目に element を挿入する
     pub fn insert(&mut self, index: usize, element: T) {
         assert!(index <= self.len);
         if index == self.len || self.len == 0 {
@@ -78,6 +95,15 @@ impl<'a, T> Queue<'a, T> where T: 'a + Copy {
         }
     }
 
+    /// index 番目の要素を入れ替える(古い要素を返す)
+    pub fn replace(&mut self, index: usize, element: T) -> T {
+        assert!(index < self.len);
+        let ret = self.memory[index];
+        self.memory[index] = element;
+        ret
+    }
+
+    /// index 番目の要素を取り出して返す(元の要素は削除される)
     pub fn remove(&mut self, index: usize) -> T {
         assert!(index < self.len);
         let ret = self.memory[index];
@@ -90,6 +116,8 @@ impl<'a, T> Queue<'a, T> where T: 'a + Copy {
         ret
     }
 
+
+    /// 末尾に要素を付加する
     #[inline]
     pub fn push(&mut self, value: T) {
         if self.available() >= 1 {
@@ -100,6 +128,7 @@ impl<'a, T> Queue<'a, T> where T: 'a + Copy {
         }
     }
 
+    /// 末尾の要素を取り出して返す(元の要素は削除される)
     #[inline]
     pub fn pop(&mut self) -> Option<T> {
         if self.len > 0 {
@@ -112,6 +141,7 @@ impl<'a, T> Queue<'a, T> where T: 'a + Copy {
         }
     }
 
+    /// 末尾に複数の要素を付加する
     #[inline]
     pub fn push_all(&mut self, other: &[T]) {
         self.lock.get_lock();
@@ -126,6 +156,7 @@ impl<'a, T> Queue<'a, T> where T: 'a + Copy {
         self.len = 0
     }
 
+    /// すべての要素に f を適用する
     pub fn map_in_place<F>(&mut self, f: F)
         where F: Fn(&mut T)
     {
@@ -158,6 +189,5 @@ impl<'a, T> Queue<'a, T> where T: 'a + Copy {
         self.lock.unlock();
         ret
     }
-
 }
 
