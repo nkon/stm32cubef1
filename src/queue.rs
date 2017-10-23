@@ -1,7 +1,9 @@
 #![allow(dead_code)]
 
 use core;
-use lock::Lock;
+//use lock::Lock;
+use nostd_tool::lock;
+use nostd_tool::lock::Lock;
 
 #[derive(Debug)]
 pub enum ErrorKind {

@@ -5,3 +5,4 @@ authors = ["KONDO Nobuhiro <kondou.nobuhiro@gmail.com>"]
 build = "build.rs"
 
 [dependencies]
+nostd_tool = {path = "../nostd_tool"}
